@@ -69,11 +69,6 @@ The build procedure is simple:
 -----------------------------------
 $./build-qtgst.sh {target}
 -----------------------------------
-$ mkdir build && cd build
-$ cmake .. -DCMAKE_INSTALL_PREFIX=/path/to/installation/prefix
-$ make
-$ make install
------------------------------------
 
 Other options that can be passed to cmake include:
 
