@@ -116,10 +116,11 @@ elseif (${QT_VERSION} STREQUAL "4")
     set(QT_LIBRARY_DIR_TMP        ${ARM_LIB_DIR})  
     set(QT_QTCORE_LIBRARY_RELEASE "${QT_LIBRARY_DIR_TMP}/libQtCore.so")
     set(QT_HEADERS_DIR            "${ARM_INCLUDE_DIR}/qt4")
-    set(QT_QTCORE_INCLUDE_DIR    "${QT_HEADERS_DIR}/QtCore")  
+    set(QT_QTCORE_INCLUDE_DIR     "${QT_HEADERS_DIR}/QtCore")  
     #added for boost inc to header
     set(QT_HEADERS_DIR           "/usr/include/qt4/.." "${QT_HEADERS_DIR}")
     set(QT_PLUGINS_DIR            "$ENV{TARGET_ROOT}/lib/plugins")
+    set(QT_IMPORTS_DIR            "/usr/lib/imports")    
   endif()
   
   set(QT_USE_IMPORTED_TARGETS TRUE)

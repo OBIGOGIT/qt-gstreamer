@@ -1,5 +1,5 @@
 #!/bin/bash
-APP_HU_DIR=$PWD/../appconnector-hu/NativeUI
+APP_HU_DIR=$PWD/../appconnector-suite-build
 
 print_usage(){
     echo "Usage:"
@@ -8,7 +8,7 @@ print_usage(){
     echo "        arm         build binding for Linux armv7l, support software floating point"
     echo "        armv7l-hf   build binding for Linux armv7l, support hardware floating point"
     echo "        host        build binding for Linux X86"
-    echo "        Clean       clean"
+    echo "        clean       clean"
     echo "    release:"
     echo "        build in release mode, otherwise in debug mode"
 }
@@ -22,9 +22,9 @@ fi
 
 set_x86_build_env() {
     pushd $APP_HU_DIR 
-    ./configure host
-    . ../config.obigo
-    . ../environment.host
+    ./configure
+    . ./config
+    . ./Linux/environment    
     popd
 
     if [ ! -d build ] ; then
@@ -38,9 +38,10 @@ set_x86_build_env() {
 set_arm_build_env() {
     pushd $APP_HU_DIR
     ./configure poky
-    . ../config.obigo
-    . ../environment.poky
+    . ./config
+    . ./poky/environment
     popd
+
 
     if [ ! -d build ] ; then
         mkdir build
