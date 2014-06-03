@@ -1,5 +1,5 @@
 #!/bin/bash
-APP_HU_DIR=$PWD/../appconnector-suite-build
+APP_BUILD_DIR=$PWD/../appconnector-suite-build
 
 print_usage(){
     echo "Usage:"
@@ -14,8 +14,8 @@ print_usage(){
 }
 
 
-if [ ! -d $APP_HU_DIR ] ; then
-  echo "There is no '../appconnector-hu/NativeUI' path in a current directory, we need the path for running this."  
+if [ ! -d $APP_BUILD_DIR ] ; then
+  echo "There is no '../appconnector-suite-build' path in a current directory, we need the path for running this."  
   exit 0
 fi  
 
@@ -23,8 +23,6 @@ fi
 set_x86_build_env() {
     pushd $APP_HU_DIR 
     ./configure
-    . ./config
-    . ./Linux/environment    
     popd
 
     if [ ! -d build ] ; then
@@ -38,8 +36,6 @@ set_x86_build_env() {
 set_arm_build_env() {
     pushd $APP_HU_DIR
     ./configure poky
-    . ./config
-    . ./poky/environment
     popd
 
 
