@@ -21,8 +21,10 @@ fi
 
 
 set_x86_build_env() {
-    pushd $APP_HU_DIR 
+    pushd $APP_BUILD_DIR 
     ./configure
+    . ./config
+    . ./Linux/environment
     popd
 
     if [ ! -d build ] ; then
@@ -34,8 +36,10 @@ set_x86_build_env() {
 
 
 set_arm_build_env() {
-    pushd $APP_HU_DIR
+    pushd $APP_BUILD_DIR
     ./configure poky
+    . ./config
+    . ./poky/environment
     popd
 
 
@@ -90,6 +94,7 @@ case $1 in
         print_usage
         exit 1
 esac
+
 
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr $ARGS
 make -j4 && make install DESTDIR=../out/$MY_TARGET_ARCH
